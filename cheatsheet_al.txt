@@ -1,0 +1,175 @@
+1 - INFORMACIONI SISTEMIT
+uname -a ; Shfaq informacionin e sistemit Linux
+uname -r ; Shfaq informacionin e kernelit
+cat /etc/os-release ; Shfaq versionin e sistemit te instaluar
+uptime ; Shfaq sa kohe ka qe eshte ndezur sistemi
+hostname ; Shfaq host name te sistemit
+hostname -I ; Shfaq IP addresen e host
+last reboot ; Shfaq historine e reboot (ndezje/fikje) te sistemit
+date ; Shfaq daten dhe oren aktuale te sistemit
+cal ; Shfaq kalendarine ketij muaji
+
+2 - INFORMACIONI HARDWARE
+dmesg ; Shfaq mesazhet e kernelit ne buffer (listen e ekzekutimit)
+cat /proc/cpuinfo ; Shfaq informacionin per CPU
+cat /proc/meminfo ; Shfaq informacionin per memorien (RAM)
+free -h ; Shfaq hapesiren e memories se lire dhe te perdorur (RAM) ( -h lexim i kuptueshem nga njeriu, -m per MB, -g per GB.)
+lspci -tv ; Shfaq nderfaqet PCI
+lsusb -tv ; Shfaq nderfaqet USB
+dmidecode ; Shfaq informacionin hardware DMI/SMBIOS nga BIOS
+hdparm -i /dev/sda ; Shfaq informacionin mbi diskun disk sda
+hdparm -tT /dev/sda ; Testim i shkrimit dhe leximit mbi disk sda
+badblocks -s /dev/sda ; Testim per blloqe te dhenash te demtuara ne disk sda
+
+3 - MONITORIMI PERFORMANCES DHE STATISTIKAT
+top ; Shfaq dhe manaxho proceset kryesore
+htop ; Alternative e top me funksione interaktive
+mpstat 1 ; Shfaq statistikat e procesorit
+vmstat 1 ; Shfaq statistikat e virtual memory
+iostat 1 ; Shfaq statistikat e I/O (nderfaqje Input/Output)
+tail 100 /var/log/messages ; Shfaq 100 mesazhet e fundit nga syslog (/var/log/syslog per Debian)
+tcpdump -i eth0 ; Kap dhe shfaq paketat nga nderfaqja eth0
+tcpdump -i eth0 'port 80' ; Monitoro trafikun ne porten 80 ( HTTP )
+lsof ; Listo gjithe filet e hapura nga user
+lsof -u user ; Listo gjithe filet e hapura te sistemit
+watch df -h ; Ekzekuto "df -h", dhe shfaq azhornime mbi gjendjen
+
+4 - INFORMACIONI DHE MANAXHIMI PERDORUESEVE
+whoami ; Shfaq me c'fare emri jeni loguar
+id ; Shfaq user dhe group ID per userin tuaj aktual.
+last ; Shfaq user te fundit qe jane loguar ne sistem.
+who ; Shfaq kush eshte i loguar ne sistem.
+w ; Shfaq kush eshte i loguar ne sistem dhe c'fare po bejne.
+groupadd test ; Krijo grupin me emer "test".
+useradd -c "John Smith" -m john ; Krijo user me emer john, me koment "John Smith" dhe krijo per te nje home directory.
+userdel john ; Fshi userin john.
+usermod -aG sales john ; Shto userin john ne grupin 'sales'
+
+5 - KOMANDAT PER FILE DHE DIRECTORY
+ls -al ; Listo gjithe filet ne format te gjate dhe te detajuar
+pwd ; Shfaq direktorine e punes aktuale
+mkdir directory ; Krijo nje direktori
+rm file ; Fshi (delete) filet
+rm -r directory ; Fshi direktorine gjithe permbajtjen ne menyre rekursive (per cdo permbajtje)
+rm -f file ; Fshi file pa nevoje per konfirmim
+rm -rf directory ; Fshi direktorine me forcim pa konfirmim me gjithe permbajtjen ne menyre rekursive (per cdo permbajtje)
+cp file1 file2 ; Kopjo file1 ne file2
+cp -r source_directory destination ; Kopjo 'source_directory' me gjithe permbajtje ne direktorine 'destination'.
+mv file1 file2 ; Rename (riemero) ose leviz file1 ne file2. Nese file2 eshte direktori atehere file1 do te perfshihet ne te
+ln -s /path/to/file linkname ; Krijo nje symbolic link ne linkname
+touch file ; Krijo nje file bosh.
+cat file ; Shfaq ne terminal permbajtjen e file
+less file ; Lexo file duke levizur me shigjetat ←↑↓→
+head file ; Shfaq 10 rreshtat e pare te nje file
+tail file ; Shfaq 10 rreshtat e fundit te nje file
+tail -f file ; Shfaq 10 rreshtat e fundit te nje file dhe ndiq file ndersa rritet.
+
+6 - MANAXHIMI PROCESEVE
+ps ; Shfaq proceset qe jane running (ne ekzekutim)
+ps -ef ; Shfaq proceset qe jane running dhe proceset e sistemit.
+ps -ef | grep processname ; Shfaq informacion mbi procesin 'processname'
+top ; Shfaq dhe manaxho proceset kryesore
+htop ; Alternative e top me funksione interaktive
+kill 24567 ; Ndalo procesin me process ID numerike 24567
+killall processname ; Ndalo gjithe proceset me emer 'processname'
+program & ; Starto (nis) programin me emer 'program' ne background (prapaskene)
+bg ; Shfaq programet ne background
+fg n ; Leviz programin me numer n nga background ne foreground (paraskene)
+
+7 - TE DREJTAT E FILEVE SHEMBULL
+U G O
+rwx rwx rwx chmod 777 filename  ; nuk limiton asnje akses mbi filet!
+rwx rwx r-x chmod 775 filename
+rwx r-x r-x chmod 755 filename
+rw- rw- r-- chmod 664 filename
+rw- r-- r-- chmod 644 filename
+SQARIM
+U = User (perdoruesi qe eshte pronar i file)
+G = Group (grupi ku ben pjese perdoruesi)
+O = Others (te tjeret)
+r = Read = 4
+w = write = 2
+x = execute = 1
+- = no access = 0
+
+8 - NETWORK/RRJETI
+ifconfig -a ; Shfaq gjithe nderfaqjet e rrjetit dhe informacionin e detajuar per secilen
+ifconfig eth0 ; Shfaq informacion vetem mbi nderfaqjen eth0
+ethtool eth0 ; Kontrollo network driver dhe hardware settings
+ping 192.168.10.1 ; Dergo nje kerkese ICMP drejt IP 192.168.10.1
+whois www.gnu.org ; Shfaq informacionin mbi whois per domain www.gnu.org
+dig www.gnu.org ; Shfaq informacionin DNS per domain www.gnu.org
+dig -x 217.33.68.03 ; Reverse lookup i IP 217.33.68.03
+host www.gnu.org ; Shfaq DNS ip address per domain www.gnu.org
+hostname -i ; Shfaq adresen e rrjetit per sistemin aktual.
+hostname -I ; Shfaq te gjitha adresat e rrjetit per sistemin aktual.
+wget http://www.gnu.org/file.txt ; Download http://www.gnu.org/file.txt
+netstat -nutlp ; Shfaq portat tcp dhe udp si dhe programet qe i kane hapur
+netstat -a | grep ESTABLISHED ; Shfaqni lidhjet tcp te plotesuar ndaj sistemit
+
+
+9 - ARKIVAT (FILE TAR)
+tar -cf archive.tar /home/john/Documents ; Krijo archive.tar qe permban direktorine /home/john/Documents.
+
+tar -xf archive.tar ; Ekstrakto permbajtjen e archive.tar.
+
+tar -czf archive.tar.gz /home/john/Documents ; Krijo archive.tar.gz me kompresim gzip qe permban direktorine /home/john/Documents.
+
+tar -xzf archive.tar.gz ; Ekstrakto permbajtjen e archive.tar.gz.
+tar -C /home/john/extracthere -xf archive.tar path/inside/tar/file.txt –strip=3  ; Ekstrakto vetem “file.txt” nga archive.tar dhe dergoje ne direktorine “/home/john/extracthere”
+tar -cjf archive.tar.bz2 /home/john/Documents ; Krijo archive.tar.bz2 me kompresim bzip2 qe permban direktorine /home/john/Documents.
+tar -xjf archive.tar.bz2 ; Ekstrakto permbajtjen e archive.tar.bz2
+
+10 - INSTALIMI PAKETAVE
+yum search mypacket ; Kerko per paketen me emer ose pershkrim 'mypacket'.
+yum install samba ; Instalo paketen me emer samba.
+yum info samba ; Shfaq pershkrimin dhe permbledhjen e informacionit mbi paketen me emer samba.
+rpm -i samba.rpm ; Instalo paketen nga file me emer samba.rpm
+yum remove samba ; Elimino paketen samba.
+tar zxvf samba.tar.gz ; Instalo paketen nga file me source code
+cd samba
+./configure
+make
+make install
+
+
+11 – KERKIMI FILEVE DHE TEKSTIT
+grep 'teskti yt' file.txt ; Kerko per 'teksti yt' ne file.txt
+grep -r teskti directory ; Kerko per tekst brenda direktorine 'directory'
+sed 's/abc/xyz/Ig' file.txt' ; Kerko tekstin 'abc' brenda file.txt dhe zevendesoje me 'xyz'
+awk -F':' '{print $1,$3,$4;}' /etc/passwd  ; Printo kollonat 1 3 dhe 4 te ndara nga karakteri : ne file /etc/passwd
+diff -c file1.txt file2.txt ; Gjej ndryshimet midis fileve file1.txt dhe file2.txt ne kontekst (-c)
+locate john ; Gjej filet dhe direktorite me emer 'john'.
+find /home/john -name 'down*' ; Kerko per file ne /home/john qe fillojne me "down".
+find /home -size +100M ; Kerko per file me dimensione mbi 100MB ne /home
+
+12 - SSH (Secure SHELL=Terminali sigurte)
+ssh 192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username aktual.
+ssh alice@192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username alice
+ssh -p 40452 alice@192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username alice ne porten 40452
+
+
+
+13 - TRANSFERIMET E FILEVE
+scp file.txt 192.168.10.1:/tmp ; Kopje e sigurte te file.txt ne folderin /tmp ne serverin me IP 192.168.10.1
+scp 192.168.10.1:/var/www/*.html /tmp ; Kopje e sigurte te gjithe fileve *.html nga serveri IP 192.168.10.1 ne folderin /tmp.
+scp -r 192.168.10.1:/var/www /tmp ; Kopje e sigurte te gjithe direktorise /var/www nga serveri IP 192.168.10.1 ne folderin /tmp.
+rsync -a /home /backups/ ; Sinkronizo /home ne /backups/home
+rsync -avz /home 192.168.10.1:/backups/ ; Sinkronizo files/directories midis sistemit local dhe direktorise backups ne server me IP 192.168.10.1
+
+
+14 - PERDORIMI DISKUT
+df -h ; Shfaq hapesiren e lire dhe te zene ne cdo filesistem
+df -i ; Shfaq inodet e lira dhe te zena ne cdo filesistem
+fdisk -l ; Shfaq disket dhe particionet me tipet perkatese
+du -ah ; Shfaq permasat ne disk per te gjitha filet dhe direktorite
+du -sh ; Shfaq shumen totale te permases ne disk per direktorine aktuale
+
+
+15 - LEVIZJA NEPER DIREKTORI
+cd .. ; Leviz nje nivel direktorie me siper (parent directory).
+cd ~ ; Leviz ne direktorine $HOME
+cd /etc/sound ; Leviz ne direktorine /etc/sound
+
+
+
