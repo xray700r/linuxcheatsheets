@@ -68,9 +68,11 @@ tail -f file ; Shfaq 10 rreshtat e fundit te nje file dhe ndiq file ndersa rrite
 ps ; Shfaq proceset qe jane running (ne ekzekutim)
 ps -ef ; Shfaq proceset qe jane running dhe proceset e sistemit.
 ps -ef | grep processname ; Shfaq informacion mbi procesin 'processname'
+ps -elf ; shfaq ne format te gjate proceset running dhe ato te sistemit
 top ; Shfaq dhe manaxho proceset kryesore
 htop ; Alternative e top me funksione interaktive
 kill 24567 ; Ndalo procesin me process ID numerike 24567
+kill -s SIGTERM 24567 ; Ndalo procesin me process ID numerike 24567 me sinjal SIGTERM; (SIGTERM/SIGKILL/SIGHUP/SIGSTOP/SIGCONT)
 killall processname ; Ndalo gjithe proceset me emer 'processname'
 program & ; Starto (nis) programin me emer 'program' ne background (prapaskene)
 bg ; Shfaq programet ne background
