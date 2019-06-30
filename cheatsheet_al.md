@@ -344,18 +344,13 @@ dpkg -i /adrese/e/file.deb # instalon pakete nga nje file rpm
 ```sh
 grep 'tekst' file # afishon te gjithe rreshtat qe permbajne stringun 'tekst' ne file
 grep -r 'tekst' directory # afishon te gjithe rreshtat qe permbajne stringun 'tekst' ne cdo file ne direktorine directory
-sed 's/abc/xyz/Ig' file.txt' # Kerko tekstin 'abc' brenda file.txt dhe zevendesoje me 'xyz'
+sed 's/abc/xyz/Ig' 'file.txt' # Kerko tekstin 'abc' brenda file.txt dhe zevendesoje me 'xyz'
 awk -F':' '{print $1,$3,$4;}' /etc/passwd  # Printo kollonat 1 3 dhe 4 te ndara nga karakteri : ne file /etc/passwd
 diff -c file1.txt file2.txt # Gjej ndryshimet midis fileve file1.txt dhe file2.txt ne kontekst (-c)
 locate john # Gjej filet dhe direktorite me emer 'john'.
 find /home/john -name 'down*' # Kerko per file ne /home/john qe fillojne me "down".
 find /home -size +100M # Kerko per file me dimensione mbi 100MB ne /home
 ```
-
-12 - SSH (Secure SHELL=Terminali sigurte)
-ssh 192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username aktual.
-ssh alice@192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username alice
-ssh -p 40452 alice@192.168.10.1 ; Lidhu me ssh ne IP 192.168.10.1 me username alice ne porten 40452
 
 ## SSH
 ```sh
