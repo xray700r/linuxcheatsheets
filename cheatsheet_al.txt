@@ -4,7 +4,7 @@ uname -r ; Shfaq informacionin e kernelit
 cat /etc/os-release ; Shfaq versionin e sistemit te instaluar
 uptime ; Shfaq sa kohe ka qe eshte ndezur sistemi
 hostname ; Shfaq host name te sistemit
-hostname -I ; Shfaq IP addresen e host
+hostname -i ; Shfaq IP addresen e host
 last reboot ; Shfaq historine e reboot (ndezje/fikje) te sistemit
 date ; Shfaq daten dhe oren aktuale te sistemit
 cal ; Shfaq kalendarine ketij muaji
@@ -27,11 +27,12 @@ htop ; Alternative e top me funksione interaktive
 mpstat 1 ; Shfaq statistikat e procesorit
 vmstat 1 ; Shfaq statistikat e virtual memory
 iostat 1 ; Shfaq statistikat e I/O (nderfaqje Input/Output)
-tail 100 /var/log/messages ; Shfaq 100 mesazhet e fundit nga syslog (/var/log/syslog per Debian)
+journalctl -xe ; Shfaq mesazhet e syslog 
 tcpdump -i eth0 ; Kap dhe shfaq paketat nga nderfaqja eth0
 tcpdump -i eth0 'port 80' ; Monitoro trafikun ne porten 80 ( HTTP )
 lsof ; Listo gjithe filet e hapura nga user
 lsof -u user ; Listo gjithe filet e hapura te sistemit
+lsof /dev/sda ; Listo filet e hapura nga disku sda
 watch df -h ; Ekzekuto "df -h", dhe shfaq azhornime mbi gjendjen
 
 4 - INFORMACIONI DHE MANAXHIMI PERDORUESEVE
@@ -39,11 +40,12 @@ whoami ; Shfaq me c'fare emri jeni loguar
 id ; Shfaq user dhe group ID per userin tuaj aktual.
 last ; Shfaq user te fundit qe jane loguar ne sistem.
 who ; Shfaq kush eshte i loguar ne sistem.
-w ; Shfaq kush eshte i loguar ne sistem dhe c'fare po bejne.
+w ; Shfaq kush eshte i loguar ne sistem dhe shell qe po perdorin
 groupadd test ; Krijo grupin me emer "test".
 useradd -c "John Smith" -m john ; Krijo user me emer john, me koment "John Smith" dhe krijo per te nje home directory.
 userdel john ; Fshi userin john.
-usermod -aG sales john ; Shto userin john ne grupin 'sales'
+usermod -aG sales john ; Shto userin john ne grupin 'sales' si grup sekondar
+usermod -ag sales john ; Shto userin john ne grupin 'sales' si grup primar
 
 5 - KOMANDAT PER FILE DHE DIRECTORY
 ls -al ; Listo gjithe filet ne format te gjate dhe te detajuar
@@ -73,7 +75,8 @@ top ; Shfaq dhe manaxho proceset kryesore
 htop ; Alternative e top me funksione interaktive
 kill 24567 ; Ndalo procesin me process ID numerike 24567
 kill -s SIGTERM 24567 ; Ndalo procesin me process ID numerike 24567 me sinjal SIGTERM; (SIGTERM/SIGKILL/SIGHUP/SIGSTOP/SIGCONT)
-killall processname ; Ndalo gjithe proceset me emer 'processname'
+kill %n ; Ndalo procesin me numer n ne background te shellit aktual
+killall processname ; Ndalo gjithe proceset me emer qe fillon me 'processname'
 program & ; Starto (nis) programin me emer 'program' ne background (prapaskene)
 bg ; Shfaq programet ne background
 fg n ; Leviz programin me numer n nga background ne foreground (paraskene)
@@ -87,7 +90,7 @@ rw- rw- r-- chmod 664 filename
 rw- r-- r-- chmod 644 filename
 SQARIM
 U = User (perdoruesi qe eshte pronar i file)
-G = Group (grupi ku ben pjese perdoruesi)
+G = Group (grupi qe eshte pronar i file)
 O = Others (te tjeret)
 r = Read = 4
 w = write = 2
@@ -104,8 +107,7 @@ dig www.gnu.org ; Shfaq informacionin DNS per domain www.gnu.org
 dig -x 217.33.68.03 ; Reverse lookup i IP 217.33.68.03
 host www.gnu.org ; Shfaq DNS ip address per domain www.gnu.org
 hostname -i ; Shfaq adresen e rrjetit per sistemin aktual.
-hostname -I ; Shfaq te gjitha adresat e rrjetit per sistemin aktual.
-wget http://www.gnu.org/file.txt ; Download http://www.gnu.org/file.txt
+wget http://www.gnu.org/file.txt ; GET request tek http://www.gnu.org/file.txt
 netstat -nutlp ; Shfaq portat tcp dhe udp si dhe programet qe i kane hapur
 netstat -a | grep ESTABLISHED ; Shfaqni lidhjet tcp te plotesuar ndaj sistemit
 
@@ -123,6 +125,7 @@ tar -cjf archive.tar.bz2 /home/john/Documents ; Krijo archive.tar.bz2 me kompres
 tar -xjf archive.tar.bz2 ; Ekstrakto permbajtjen e archive.tar.bz2
 
 10 - INSTALIMI PAKETAVE
+dnf whatprovides binary ; Kerko per paketen qe ofron binarin 'binary'
 yum search mypacket ; Kerko per paketen me emer ose pershkrim 'mypacket'.
 yum install samba ; Instalo paketen me emer samba.
 yum info samba ; Shfaq pershkrimin dhe permbledhjen e informacionit mbi paketen me emer samba.
