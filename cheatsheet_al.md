@@ -331,7 +331,7 @@ cd build
 make
 sudo make install
 ```
-## Menaxhimi i paketave per sistemet e familjes Red Hat
+## Menaxhimi i paketave per sistemet e familjes Debian
 ```sh
 apt search package # Kerkon paketen me emrin package
 apt install package # instalon paketen me emrin package
