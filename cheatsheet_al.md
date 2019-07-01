@@ -315,7 +315,7 @@ yum whatprovides binary # Kerkon paketen qe ofron binarin binary
 yum search package # Kerkon paketen me emrin package
 yum install package # instalon paketen me emrin package
 yum info package # jep informacione per paketen package
-yum remove package # cinstalon paketen me emrin package
+yum remove package # c'instalon paketen me emrin package
 rpm -i /adrese/e/file.rpm # instalon pakete nga nje file rpm
 
 # Istalim nga source, aplikohet ne cdo sistem nqs eshte
@@ -335,8 +335,8 @@ sudo make install
 ```sh
 apt search package # Kerkon paketen me emrin package
 apt install package # instalon paketen me emrin package
-apt remove package # cinstalon paketen me emrin package
-apt purge package # nuk ruan filet e konfigurimit te paketes pasi cinstalohet
+apt remove package # c'instalon paketen me emrin package
+apt purge package # nuk ruan filet e konfigurimit te paketes pasi c'instalohet
 dpkg -i /adrese/e/file.deb # instalon pakete nga nje file rpm
 ```
 
