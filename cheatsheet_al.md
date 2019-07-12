@@ -4,8 +4,8 @@
 * Lloji i kernelit
 * Hostname
 * Versioni i kernelit
-* Momentit e upgradit te fundit
-* Arkitekturen
+* Momenti i upgrade te fundit
+* Arkitektura
 * Shiko man uname
 
 #### cat /etc/os-release
@@ -19,7 +19,7 @@
 
 #### hostname
 * Shfaq hostname te sistemit
-* -i shfaq adresen ip
+* -I shfaq adresen ip te rrjetit (LAN)
 * shiko man hostname
 
 #### last
@@ -52,6 +52,9 @@
 
 #### cat /proc/meminfo
 * Shfaqe informacione per memorien RAM
+
+#### cat /proc/cpuinfo
+* Shfaqe informacione per CPU te instaluar
 
 #### free
 * Shfaq memorien ram te perdorur, te lire, cache,  swap dhe te perdorshme
